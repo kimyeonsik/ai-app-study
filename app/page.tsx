@@ -176,9 +176,8 @@ export default function Home() {
             {[
               { label: "총 회차", value: `${totalSessions}회차` },
               { label: "기간", value: "약 5개월" },
-              { label: "모집 인원", value: "6~8명" },
               { label: "주기", value: "주 1회" },
-              { label: "마일스톤", value: "3회" },
+              { label: "회당 시간", value: "2시간" },
             ].map((stat) => (
               <div
                 key={stat.label}
