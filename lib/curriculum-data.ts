@@ -1,15 +1,9 @@
-export type Assignment = {
-  beginner?: string; // 🟢 비개발자
-  junior?: string; // 🟡 주니어
-  advanced?: string; // 🔴 심화
-};
-
 export type Session = {
   number: number;
   title: string;
   content: string[];
   note?: string;
-  assignment: Assignment;
+  assignment?: string;
   isMilestone?: boolean;
 };
 
@@ -43,17 +37,14 @@ export const curriculum: Phase[] = [
         number: 1,
         title: "오리엔테이션 + 개발 세계 큰 그림",
         content: [
-          "각자 만들고 싶은 앱 1줄 소개",
-          "클라이언트↔서버↔DB 흐름",
-          "클라우드/Self-hosted 판단",
-          "SQL/NoSQL 기초",
-          "전체 스택 연결 이해",
-          "Cursor + Claude/ChatGPT 설치",
+          "각자 만들고 싶은 앱 한줄소개",
+          "앱 서비스의 구성요소",
+          "각 직군의 역할",
+          "전체 기술 스택의 이해",
+          "프롬프팅 기초",
         ],
-        note: "세팅은 스크린샷 포함 문서로 미리 배포",
-        assignment: {
-          beginner: "만들고 싶은 앱을 AI에게 설명하고 피드백 받아보기",
-        },
+        note: "실습: 컨텍스트 기반 프롬프팅 실습",
+        assignment: "만들고 싶은 앱을 AI에게 설명하고 피드백 받아보기",
       },
       {
         number: 2,
@@ -64,11 +55,8 @@ export const curriculum: Phase[] = [
           "바이브코딩 철학",
           "멀티에이전트 구조 개념",
         ],
-        note: "비개발자도 PRD 작성 가능 — AI가 초안을 만들고 본인이 편집",
-        assignment: {
-          beginner:
-            "내 앱 PRD 초안 완성 (목적·타겟유저·핵심기능 3가지 이상)",
-        },
+        note: "AI가 초안을 만들고 본인이 편집하는 방식",
+        assignment: "내 앱 PRD 초안 완성 (목적·타겟유저·핵심기능 3가지 이상)",
       },
       {
         number: 3,
@@ -80,11 +68,7 @@ export const curriculum: Phase[] = [
           "Git 기초",
           "Supabase/Vercel/Expo 계정 세팅",
         ],
-        assignment: {
-          beginner:
-            "Plane.so에 기능 이슈 5개 이상 + GitHub 레포 첫 커밋",
-          junior: "feat/init-setup 브랜치 만들고 PR 올려보기",
-        },
+        assignment: "Plane.so에 기능 이슈 5개 이상 + GitHub 레포 첫 커밋",
       },
     ],
   },
@@ -104,11 +88,8 @@ export const curriculum: Phase[] = [
           "AI로 API 구조 초안",
           "좋은 기획 프롬프트 vs 나쁜 기획 프롬프트 비교",
         ],
-        assignment: {
-          beginner:
-            "내 앱 PRD를 AI로 유저스토리 5개로 분해 → Plane.so 이슈 등록",
-          junior: "DB 테이블 구조 AI로 설계해서 다이어그램으로 정리",
-        },
+        assignment:
+          "내 앱 PRD를 AI로 유저스토리 5개로 분해 → Plane.so 이슈 등록",
       },
       {
         number: 5,
@@ -122,11 +103,7 @@ export const curriculum: Phase[] = [
           "CLAUDE.md / .cursorrules 작성법",
         ],
         note: "실습: 각자 앱의 핵심 화면 1개를 AI로 생성해보기",
-        assignment: {
-          beginner: "내 앱 메인 화면 AI로 생성하고 스크린샷 공유",
-          junior: "핵심 기능 API 엔드포인트 1개 AI로 구현",
-          advanced: ".cursorrules 작성 후 일관성 향상 효과 비교",
-        },
+        assignment: "내 앱 메인 화면 AI로 생성하고 스크린샷 공유",
       },
       {
         number: 6,
@@ -138,10 +115,7 @@ export const curriculum: Phase[] = [
           "다음 페이즈 목표 설정",
         ],
         note: "평가 기준: 동작하는 화면이 1개 이상 + PRD 대비 진행률",
-        assignment: {
-          beginner: "피드백 반영해서 PRD 업데이트",
-          junior: "기술 부채 목록 작성 + 해결 우선순위 정하기",
-        },
+        assignment: "피드백 반영해서 PRD 업데이트",
         isMilestone: true,
       },
     ],
@@ -162,11 +136,7 @@ export const curriculum: Phase[] = [
           "AI로 UI 컴포넌트 빠르게 생성하기",
           "상태 관리 기초 (useState, useEffect)",
         ],
-        assignment: {
-          beginner: "메인 페이지 레이아웃 완성 (헤더+본문+푸터)",
-          junior: "재사용 가능한 컴포넌트 3개 이상 분리",
-          advanced: "Zustand 또는 Jotai로 전역 상태 관리 도입",
-        },
+        assignment: "메인 페이지 레이아웃 완성 (헤더+본문+푸터)",
       },
       {
         number: 8,
@@ -178,11 +148,7 @@ export const curriculum: Phase[] = [
           "AI로 SQL 쿼리 생성 및 최적화",
           "API 테스트 (Thunder Client / Postman)",
         ],
-        assignment: {
-          beginner: "핵심 데이터 테이블 1개 생성 + 조회 API 연결",
-          junior: "완전한 CRUD API 완성 + 프론트 연동",
-          advanced: "Supabase Edge Functions으로 서버리스 로직 추가",
-        },
+        assignment: "핵심 데이터 테이블 1개 생성 + 조회 API 연결",
       },
       {
         number: 9,
@@ -194,11 +160,7 @@ export const curriculum: Phase[] = [
           "사용자별 데이터 격리 (RLS)",
           "OAuth 소셜 로그인 (Google/GitHub)",
         ],
-        assignment: {
-          beginner: "이메일 로그인 + 내 정보 보기 페이지 완성",
-          junior: "소셜 로그인 추가 + 프로필 수정 기능",
-          advanced: "역할 기반 접근 제어 (RBAC) 구현",
-        },
+        assignment: "이메일 로그인 + 내 정보 보기 페이지 완성",
       },
       {
         number: 10,
@@ -210,11 +172,7 @@ export const curriculum: Phase[] = [
           "낙관적 UI 업데이트 패턴",
           "웹소켓 vs 폴링 vs SSE 비교",
         ],
-        assignment: {
-          beginner: "이미지 업로드 기능 1개 추가",
-          junior: "실시간 알림 또는 채팅 기능 구현",
-          advanced: "파일 업로드 진행률 표시 + 에러 처리",
-        },
+        assignment: "이미지 업로드 기능 1개 추가",
       },
       {
         number: 11,
@@ -227,10 +185,7 @@ export const curriculum: Phase[] = [
           "사용자 피드백 시뮬레이션",
         ],
         note: "평가 기준: 로그인 + 핵심 기능 2개 이상 동작 + 배포 URL",
-        assignment: {
-          beginner: "지인 3명에게 사용해달라고 부탁하고 피드백 수집",
-          junior: "성능 프로파일링 후 개선 포인트 정리",
-        },
+        assignment: "지인 3명에게 사용해달라고 부탁하고 피드백 수집",
         isMilestone: true,
       },
     ],
@@ -251,11 +206,7 @@ export const curriculum: Phase[] = [
           "Preview 배포로 PR 검증",
           "커스텀 도메인 연결",
         ],
-        assignment: {
-          beginner: "Vercel에 앱 배포 + 친구에게 URL 공유",
-          junior: "GitHub Actions로 lint + typecheck 자동화",
-          advanced: "스테이징/프로덕션 환경 분리",
-        },
+        assignment: "Vercel에 앱 배포 + 친구에게 URL 공유",
       },
       {
         number: 13,
@@ -267,11 +218,7 @@ export const curriculum: Phase[] = [
           "Rate Limiting + API 보안",
           "Sentry 에러 모니터링 설정",
         ],
-        assignment: {
-          beginner: "Lighthouse 점수 70점 이상 달성",
-          junior: "핵심 API에 rate limiting 적용",
-          advanced: "Core Web Vitals 모두 Green 달성",
-        },
+        assignment: "Lighthouse 점수 70점 이상 달성",
       },
       {
         number: 14,
@@ -283,11 +230,7 @@ export const curriculum: Phase[] = [
           "에러 알림 설정 (Slack/이메일)",
           "데이터 기반 의사결정",
         ],
-        assignment: {
-          beginner: "핵심 이벤트 3개 이상 추적 설정",
-          junior: "분석 데이터로 UX 개선 포인트 발굴",
-          advanced: "A/B 테스트 설계 및 구현",
-        },
+        assignment: "핵심 이벤트 3개 이상 추적 설정",
       },
     ],
   },
@@ -307,11 +250,7 @@ export const curriculum: Phase[] = [
           "접근성 (a11y) 기초",
           "Loading skeleton + Error boundary",
         ],
-        assignment: {
-          beginner: "모바일에서 완전히 동작하는지 확인 + 수정",
-          junior: "페이지 전환 애니메이션 추가",
-          advanced: "Storybook으로 컴포넌트 문서화",
-        },
+        assignment: "모바일에서 완전히 동작하는지 확인 + 수정",
       },
       {
         number: 16,
@@ -323,11 +262,7 @@ export const curriculum: Phase[] = [
           "Tool Use (함수 호출) 패턴",
           "AI 기능 비용 최적화 (캐싱, 토큰 관리)",
         ],
-        assignment: {
-          beginner: "앱에 AI 챗봇 또는 AI 추천 기능 1개 추가",
-          junior: "Tool Use로 DB 조회 연동 AI 에이전트 구현",
-          advanced: "멀티턴 대화 + 컨텍스트 관리 최적화",
-        },
+        assignment: "앱에 AI 챗봇 또는 AI 추천 기능 1개 추가",
       },
       {
         number: 17,
@@ -340,11 +275,7 @@ export const curriculum: Phase[] = [
           "외부 게스트 피드백 (선택)",
         ],
         note: "평가 기준: AI 기능 포함 + 실제 사용 가능한 수준 + 발표 자료",
-        assignment: {
-          beginner: "앱 랜딩 페이지 작성",
-          junior: "Product Hunt 등록 준비",
-          advanced: "테크 블로그 포스트 초안 작성",
-        },
+        assignment: "앱 랜딩 페이지 작성",
         isMilestone: true,
       },
     ],
@@ -365,11 +296,7 @@ export const curriculum: Phase[] = [
           "코드 리팩터링 + 문서화",
           "README 완성",
         ],
-        assignment: {
-          beginner: "GitHub README에 스크린샷 + 사용법 추가",
-          junior: "E2E 테스트 핵심 플로우 3개 작성",
-          advanced: "컨트리뷰션 가이드 작성 + 오픈소스 준비",
-        },
+        assignment: "GitHub README에 스크린샷 + 사용법 추가",
       },
       {
         number: 19,
@@ -381,11 +308,7 @@ export const curriculum: Phase[] = [
           "사용자 획득 전략",
           "수익화 모델 검토 (선택)",
         ],
-        assignment: {
-          beginner: "앱 소개 트윗/게시물 초안 작성",
-          junior: "Product Hunt 등록 + 첫 100명 사용자 목표 설정",
-          advanced: "기술 블로그 게시 + 개발자 커뮤니티 공유",
-        },
+        assignment: "앱 소개 트윗/게시물 초안 작성",
       },
       {
         number: 20,
@@ -398,11 +321,7 @@ export const curriculum: Phase[] = [
           "수료증 수여",
         ],
         note: "외부 게스트 초청 추천 — 실제 사용자/투자자/개발자",
-        assignment: {
-          beginner: "앱 정식 출시 + 첫 사용자 확보",
-          junior: "오픈소스 공개 또는 Product Hunt 런칭",
-          advanced: "사이드 프로젝트 → 스타트업 전환 검토",
-        },
+        assignment: "앱 정식 출시 + 첫 사용자 확보",
       },
     ],
   },

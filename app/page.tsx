@@ -4,28 +4,6 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { curriculum, MILESTONE_SESSIONS, type Phase, type Session } from "@/lib/curriculum-data";
 
-function AssignmentRow({
-  emoji,
-  label,
-  text,
-}: {
-  emoji: string;
-  label: string;
-  text: string;
-}) {
-  return (
-    <div className="flex gap-2 text-sm">
-      <span className="shrink-0">{emoji}</span>
-      <span style={{ color: "#A0A0B0" }}>
-        <span className="font-medium" style={{ color: "#F0F0F5" }}>
-          {label}
-        </span>{" "}
-        {text}
-      </span>
-    </div>
-  );
-}
-
 function SessionCard({
   session,
   phaseColor,
@@ -95,38 +73,18 @@ function SessionCard({
         </p>
       )}
 
-      {/* Assignments */}
-      {(session.assignment.beginner ||
-        session.assignment.junior ||
-        session.assignment.advanced) && (
+      {/* Assignment */}
+      {session.assignment && (
         <div
-          className="flex flex-col gap-2 rounded-lg px-3 py-3"
+          className="flex flex-col gap-1.5 rounded-lg px-3 py-3"
           style={{ background: "#1E1E28", borderTop: "1px solid #2E2E38" }}
         >
           <p className="text-xs font-semibold" style={{ color: "#A0A0B0" }}>
             과제
           </p>
-          {session.assignment.beginner && (
-            <AssignmentRow
-              emoji="🟢"
-              label="비개발자"
-              text={session.assignment.beginner}
-            />
-          )}
-          {session.assignment.junior && (
-            <AssignmentRow
-              emoji="🟡"
-              label="주니어"
-              text={session.assignment.junior}
-            />
-          )}
-          {session.assignment.advanced && (
-            <AssignmentRow
-              emoji="🔴"
-              label="심화"
-              text={session.assignment.advanced}
-            />
-          )}
+          <p className="text-sm" style={{ color: "#C8C8D8" }}>
+            {session.assignment}
+          </p>
         </div>
       )}
     </div>
@@ -199,12 +157,19 @@ export default function Home() {
             AI로 앱 만들기 모임
           </h1>
           <p
-            className="text-lg max-w-2xl mx-auto mb-8"
+            className="text-lg max-w-2xl mx-auto mb-6"
             style={{ color: "#A0A0B0" }}
           >
             AI 도구로 실제 앱을 만들어보는 소모임. 기획부터 배포, AI 기능
             통합까지 — 5개월 동안 함께 만들어갑니다.
           </p>
+          <a
+            href="/slides"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium mb-8 transition-all hover:opacity-80"
+            style={{ background: "#1E1E28", color: "#A78BFA", border: "1px solid #A78BFA40" }}
+          >
+            🎞 장표로 보기 →
+          </a>
 
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-6">
@@ -300,31 +265,6 @@ export default function Home() {
             <PhaseTab key={phase.id} phase={phase} />
           ))}
         </Tabs>
-
-        {/* Legend */}
-        <div
-          className="mt-10 rounded-xl px-5 py-4 flex flex-wrap gap-6 items-center"
-          style={{ background: "#16161A", border: "1px solid #2E2E38" }}
-        >
-          <p className="text-sm font-semibold" style={{ color: "#A0A0B0" }}>
-            과제 레벨
-          </p>
-          {[
-            { emoji: "🟢", label: "비개발자", desc: "코딩 경험 없어도 OK" },
-            { emoji: "🟡", label: "주니어", desc: "기초 코딩 가능" },
-            { emoji: "🔴", label: "심화", desc: "실무 경험 보유" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-2">
-              <span>{item.emoji}</span>
-              <span className="text-sm font-medium" style={{ color: "#F0F0F5" }}>
-                {item.label}
-              </span>
-              <span className="text-sm" style={{ color: "#A0A0B0" }}>
-                {item.desc}
-              </span>
-            </div>
-          ))}
-        </div>
       </main>
     </div>
   );
