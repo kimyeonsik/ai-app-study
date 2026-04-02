@@ -458,7 +458,7 @@ function CoverSlide() {
         커리큘럼 & 개발 프로세스 가이드
       </h1>
       <div className="flex flex-wrap gap-3 justify-center">
-        {["📅 주 1회 × 20회차", "⏱ 약 5개월", "🕐 회당 2시간"].map((t) => (
+        {["📅 주 1회 × 18회차", "⏱ 약 5개월", "🕐 회당 2시간"].map((t) => (
           <span
             key={t}
             className="px-4 py-2 rounded-full text-sm font-medium"
