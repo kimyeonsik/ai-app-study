@@ -3,6 +3,50 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { curriculum, MILESTONE_SESSIONS, type Phase, type Session } from "@/lib/curriculum-data";
+import { QRCodeSVG } from "qrcode.react";
+
+const KAKAOPAY_URL = "https://qr.kakaopay.com/Ej8Rs3cTi3a9808521";
+
+function QRModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="flex flex-col items-center gap-5 rounded-2xl px-8 py-8 max-w-xs w-full"
+        style={{ background: "#16161A", border: "1px solid #2E2E38" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="text-lg font-bold" style={{ color: "#F0F0F5" }}>회비 송금</h2>
+        <div className="rounded-xl p-3" style={{ background: "#FFFFFF" }}>
+          <QRCodeSVG value={KAKAOPAY_URL} size={200} />
+        </div>
+        <p className="text-xs text-center" style={{ color: "#A0A0B0" }}>
+          카카오페이 앱으로 QR을 스캔하거나<br />
+          아래 링크를 직접 열어주세요
+        </p>
+        <a
+          href={KAKAOPAY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs px-4 py-2 rounded-lg transition-all hover:opacity-80"
+          style={{ background: "#FFE812", color: "#3A1D1D", fontWeight: 600 }}
+        >
+          카카오페이로 열기
+        </a>
+        <button
+          onClick={onClose}
+          className="text-xs"
+          style={{ color: "#A0A0B0" }}
+        >
+          닫기
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function SessionCard({
   session,
@@ -134,9 +178,11 @@ export default function Home() {
     (sum, phase) => sum + phase.items.length,
     0
   );
+  const [showQR, setShowQR] = useState(false);
 
   return (
     <div className="min-h-screen" style={{ background: "#0D0D0F" }}>
+      {showQR && <QRModal onClose={() => setShowQR(false)} />}
       <main className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Hero */}
         <div className="mb-12 text-center">
@@ -163,13 +209,22 @@ export default function Home() {
             AI 도구로 실제 앱을 만들어보는 소모임. 기획부터 배포, AI 기능
             통합까지 — 5개월 동안 함께 만들어갑니다.
           </p>
-          <a
-            href="/slides"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium mb-8 transition-all hover:opacity-80"
-            style={{ background: "#1E1E28", color: "#A78BFA", border: "1px solid #A78BFA40" }}
-          >
-            🎞 장표로 보기 →
-          </a>
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <a
+              href="/slides"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:opacity-80"
+              style={{ background: "#1E1E28", color: "#A78BFA", border: "1px solid #A78BFA40" }}
+            >
+              🎞 장표로 보기 →
+            </a>
+            <button
+              onClick={() => setShowQR(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:opacity-80"
+              style={{ background: "#FFE81220", color: "#FFE812", border: "1px solid #FFE81240" }}
+            >
+              💛 회비 송금
+            </button>
+          </div>
 
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-6">
