@@ -500,9 +500,9 @@ function CoverSlide() {
         ))}
       </div>
       <p className="text-base leading-relaxed" style={{ color: "#A0A0B0" }}>
-        <span style={{ color: "#F0F0F5", fontWeight: 600 }}>대상</span>: 비개발자(기획/디자인/일반직장인) + 주니어 개발자(1~3년)
+        <span style={{ color: "#F0F0F5", fontWeight: 600 }}>대상</span>: 비개발자
         <br />
-        <span style={{ color: "#F0F0F5", fontWeight: 600 }}>도구</span>: Claude / ChatGPT · 바이브코딩 + 멀티에이전트 방식
+        <span style={{ color: "#F0F0F5", fontWeight: 600 }}>방식</span>: LLM으로 바이브코딩
       </p>
     </div>
   );
