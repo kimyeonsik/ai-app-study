@@ -234,7 +234,7 @@ export default function Home() {
         {/* Tabs */}
         <Tabs defaultValue="phase-1">
           <TabsList
-            className="flex flex-wrap h-auto gap-1 p-1.5 mb-6 w-full"
+            className="flex h-auto gap-1 p-1.5 mb-6 w-full overflow-x-auto"
             style={{ background: "#16161A", border: "1px solid #2E2E38" }}
           >
             {curriculum.map((phase) => (
