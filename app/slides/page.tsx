@@ -30,6 +30,7 @@ interface Slide {
   content?: string[];
   note?: string;
   assignment?: string;
+  detailUrl?: string;
 }
 
 const slides: Slide[] = [
@@ -71,6 +72,7 @@ const slides: Slide[] = [
     ],
     note: "전체 흐름을 다이어그램 한 장으로 정리",
     assignment: "만들고 싶은 앱을 AI에게 설명하고 피드백 받아보기",
+    detailUrl: "/session1",
   },
   // SLIDE 4: Session 2
   {
@@ -559,6 +561,17 @@ function SessionSlide({ slide }: { slide: Slide }) {
               {slide.assignment}
             </p>
           </div>
+        )}
+
+        {/* Detail link */}
+        {slide.detailUrl && (
+          <a
+            href={slide.detailUrl}
+            className="flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all hover:opacity-80"
+            style={{ background: `${color}18`, color, border: `1px solid ${color}40` }}
+          >
+            🔍 상세 장표 보기 →
+          </a>
         )}
       </div>
     </div>
