@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { curriculum, MILESTONE_SESSIONS, type Phase, type Session } from "@/lib/curriculum-data";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -179,6 +179,7 @@ export default function Home() {
     0
   );
   const [showQR, setShowQR] = useState(false);
+  const [activePhase, setActivePhase] = useState(1);
 
   return (
     <div className="min-h-screen" style={{ background: "#0D0D0F" }}>
@@ -253,8 +254,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Phase overview */}
-        <div className="mb-8">
+        {/* Phase overview — 클릭 가능한 탭 카드 */}
+        <div className="mb-6">
           <h2
             className="text-sm font-semibold uppercase tracking-widest mb-4"
             style={{ color: "#A0A0B0" }}
@@ -262,59 +263,42 @@ export default function Home() {
             전체 커리큘럼 구성
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {curriculum.map((phase) => (
-              <div
-                key={phase.id}
-                className="rounded-xl px-4 py-3 text-center"
-                style={{ background: "#16161A", border: `1px solid ${phase.color}30` }}
-              >
-                <div
-                  className="w-2 h-2 rounded-full mx-auto mb-2"
-                  style={{ background: phase.color }}
-                />
-                <p
-                  className="text-xs font-semibold leading-tight mb-1"
-                  style={{ color: "#F0F0F5" }}
+            {curriculum.map((phase) => {
+              const isActive = activePhase === phase.id;
+              return (
+                <button
+                  key={phase.id}
+                  onClick={() => setActivePhase(phase.id)}
+                  className="rounded-xl px-4 py-4 text-center transition-all hover:opacity-90 w-full"
+                  style={{
+                    background: isActive ? `${phase.color}18` : "#16161A",
+                    border: `1.5px solid ${isActive ? phase.color : `${phase.color}30`}`,
+                    boxShadow: isActive ? `0 0 16px ${phase.color}20` : undefined,
+                  }}
                 >
-                  {phase.name}
-                </p>
-                <p className="text-xs" style={{ color: "#A0A0B0" }}>
-                  {phase.sessions}
-                </p>
-              </div>
-            ))}
+                  <div
+                    className="text-xs font-bold mb-1.5"
+                    style={{ color: phase.color }}
+                  >
+                    Phase {phase.id}
+                  </div>
+                  <p
+                    className="text-sm font-semibold leading-tight mb-1"
+                    style={{ color: "#F0F0F5" }}
+                  >
+                    {phase.name}
+                  </p>
+                  <p className="text-xs" style={{ color: "#A0A0B0" }}>
+                    {phase.sessions}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="phase-1">
-          <TabsList
-            className="flex h-auto gap-1 p-1.5 mb-6 w-full overflow-x-auto"
-            style={{ background: "#16161A", border: "1px solid #2E2E38" }}
-          >
-            {curriculum.map((phase) => (
-              <TabsTrigger
-                key={phase.id}
-                value={`phase-${phase.id}`}
-                className="flex items-center gap-1.5 text-sm rounded-lg px-3 py-1.5 transition-all data-[state=active]:text-[#F0F0F5]"
-                style={
-                  {
-                    "--phase-color": phase.color,
-                  } as React.CSSProperties
-                }
-              >
-                <span
-                  className="w-2 h-2 rounded-full shrink-0"
-                  style={{ background: phase.color }}
-                />
-                <span className="hidden sm:inline">
-                  Phase {phase.id} —{" "}
-                </span>
-                {phase.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
+        {/* Phase 내용 */}
+        <Tabs value={`phase-${activePhase}`}>
           {curriculum.map((phase) => (
             <PhaseTab key={phase.id} phase={phase} />
           ))}
