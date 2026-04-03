@@ -261,7 +261,7 @@ export default function Home() {
           >
             전체 커리큘럼 구성
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {curriculum.map((phase) => (
               <div
                 key={phase.id}
