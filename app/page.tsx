@@ -207,7 +207,7 @@ export default function Home() {
             style={{ color: "#A0A0B0" }}
           >
             AI 도구로 실제 앱을 만들어보는 소모임. 기획부터 배포, AI 기능
-            통합까지 — 5개월 동안 함께 만들어갑니다.
+            통합까지 — 3개월 동안 함께 만들어갑니다.
           </p>
           <div className="flex flex-wrap gap-3 justify-center mb-8">
             <a
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6">
             {[
               { label: "총 회차", value: `${totalSessions}회차` },
-              { label: "기간", value: "약 5개월" },
+              { label: "기간", value: "약 3개월" },
               { label: "주기", value: "주 1회" },
               { label: "회당 시간", value: "2시간" },
             ].map((stat) => (

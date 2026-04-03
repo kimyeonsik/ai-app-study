@@ -6,9 +6,7 @@ const PHASE_COLORS: Record<string, string> = {
   p1: "#4ADE80",
   p2: "#60A5FA",
   p3: "#F472B6",
-  p4: "#FB923C",
-  p5: "#A78BFA",
-  p6: "#FBBF24",
+  p4: "#FBBF24",
 };
 
 type SlideType =
@@ -45,14 +43,13 @@ const slides: Slide[] = [
     type: "phase-overview",
     phase: "p1",
     phaseNum: 1,
-    phaseLabel: "Phase 1 · 1~4회차",
-    title: "개념 & 철학",
+    phaseLabel: "Phase 1 · 1~3회차",
+    title: "이론 기초",
     tagline: '"왜 이렇게 만드는지 이해하는 단계"',
     sessions: [
-      { num: 1, title: "오리엔테이션 — 개발 시스템 큰그림" },
-      { num: 2, title: "개발 용어 이해 + 프롬프팅 기초" },
-      { num: 3, title: "바이브코딩 + 멀티에이전트 + 하네스 엔지니어링" },
-      { num: 4, title: "자동 개발 시스템 구축" },
+      { num: 1, title: "오리엔테이션 — 앱 서비스 큰 그림" },
+      { num: 2, title: "개발 용어 + 프롬프팅 기초" },
+      { num: 3, title: "바이브코딩 철학 + 멀티에이전트 구조" },
     ],
   },
   // SLIDE 3: Session 1
@@ -62,13 +59,13 @@ const slides: Slide[] = [
     phase: "p1",
     phaseLabel: "Phase 1 · 1회차",
     sessionNum: 1,
-    title: "오리엔테이션 — 개발 시스템 큰그림",
+    title: "오리엔테이션 — 앱 서비스 큰 그림",
     content: [
-      "각자 만들고 싶은 앱 한줄 소개",
-      "앱 서비스의 구성요소",
+      "각자 만들고 싶은 앱 한 줄 소개",
+      "앱 서비스의 구성요소 (클라이언트 / 서버 / DB / 인프라)",
       "앱 서비스가 나오기까지의 과정",
-      "각 직군의 역할",
-      "전체 기술 스택의 이해",
+      "각 직군의 역할 (PO / 디자이너 / 개발자 / QA)",
+      "전체 기술 스택 조감",
     ],
     note: "전체 흐름을 다이어그램 한 장으로 정리",
     assignment: "만들고 싶은 앱을 AI에게 설명하고 피드백 받아보기",
@@ -81,7 +78,7 @@ const slides: Slide[] = [
     phase: "p1",
     phaseLabel: "Phase 1 · 2회차",
     sessionNum: 2,
-    title: "개발 용어 이해 + 프롬프팅 기초",
+    title: "개발 용어 + 프롬프팅 기초",
     content: [
       "자주 쓰는 개발 용어 정리 (API, 프론트/백엔드, 배포 등)",
       "클라이언트 ↔ 서버 ↔ DB 흐름",
@@ -98,48 +95,47 @@ const slides: Slide[] = [
     phase: "p1",
     phaseLabel: "Phase 1 · 3회차",
     sessionNum: 3,
-    title: "바이브코딩 + 멀티에이전트 + 하네스 엔지니어링",
+    title: "바이브코딩 철학 + 멀티에이전트 구조",
     content: [
       "바이브코딩 철학 — 설계가 코드보다 중요하다",
       "멀티에이전트 구조 개념 (PO / Dev / QA 역할 분리)",
       "하네스 엔지니어링 개요",
-      "같은 기능을 세 포지션으로 각각 물어보기 실습",
+      "같은 기능을 세 포지션으로 각각 질문해보기 실습",
       "시스템 프롬프트 설계 기초",
     ],
     assignment: "기능 1개를 PO / Dev / QA 관점으로 각각 질문 → 결과 비교 공유",
   },
-  // SLIDE 6: Session 4
+  // SLIDE 6: Phase 2 Overview
   {
     id: 6,
-    type: "session",
-    phase: "p1",
-    phaseLabel: "Phase 1 · 4회차",
-    sessionNum: 4,
-    title: "자동 개발 시스템 구축",
-    content: [
-      "설계 → 개발 → 피드백 루프 → 자동 배포 전체 흐름",
-      "CI/CD 개념 이해",
-      "CLAUDE.md / .cursorrules 작성법",
-      "컨텍스트 윈도우 관리 전략",
-      "에러 메시지 그대로 붙여넣기 디버깅",
-    ],
-    assignment: "내 앱 전용 시스템 프롬프트(CLAUDE.md) 초안 작성",
-  },
-  // SLIDE 7: Phase 2 Overview
-  {
-    id: 7,
     type: "phase-overview",
     phase: "p2",
     phaseNum: 2,
-    phaseLabel: "Phase 2 · 5~8회차",
-    title: "설계 & 기획",
-    tagline: '"만들기 전에 제대로 설계하는 단계"',
+    phaseLabel: "Phase 2 · 4~6회차",
+    title: "시스템 구축",
+    tagline: '"나만의 AI 개발 환경을 만드는 단계"',
     sessions: [
-      { num: 5, title: "내 앱 설계 1 — PRD + 유저플로우" },
-      { num: 6, title: "내 앱 설계 2 — DB 스키마 + API 구조" },
-      { num: 7, title: "기술 스택 & 클라우드 서비스 상세" },
-      { num: 8, title: "기획 & 관리 — Plane.so + GitHub" },
+      { num: 4, title: "개발 환경 세팅 — Cursor · GitHub · Vercel" },
+      { num: 5, title: "내 앱 기획 — PRD + CLAUDE.md 작성" },
+      { num: 6, title: "워크플로우 완성 — 티켓 관리 + 개발 루프" },
     ],
+  },
+  // SLIDE 7: Session 4
+  {
+    id: 7,
+    type: "session",
+    phase: "p2",
+    phaseLabel: "Phase 2 · 4회차",
+    sessionNum: 4,
+    title: "개발 환경 세팅 — Cursor · GitHub · Vercel",
+    content: [
+      "Cursor 설치 및 AI 코딩 환경 세팅",
+      "GitHub 레포 생성 · 첫 커밋 · 브랜치 전략",
+      "Vercel 프로젝트 연결 + 자동 배포 파이프라인",
+      "환경 변수 관리 (.env 개념)",
+      "Preview 배포 체험 — PR 하나로 URL 생성",
+    ],
+    assignment: "GitHub 레포 생성 + Vercel 자동 배포 연결 성공",
   },
   // SLIDE 8: Session 5
   {
@@ -148,78 +144,83 @@ const slides: Slide[] = [
     phase: "p2",
     phaseLabel: "Phase 2 · 5회차",
     sessionNum: 5,
-    title: "내 앱 설계 1 — PRD + 유저플로우",
+    title: "내 앱 기획 — PRD + CLAUDE.md 작성",
     content: [
       "PRD 작성 실습 (Claude로 초안 생성)",
       "화면 목록 · 유저 플로우 설계",
+      "CLAUDE.md (시스템 프롬프트) 작성법 — 내 앱 전용 AI 컨텍스트",
       "AI로 PRD → 유저스토리 → 이슈 분해",
       "바이브코딩으로 PRD 고도화 실습",
     ],
-    assignment: "내 앱 PRD 초안 완성 (목적 · 타겟유저 · 핵심기능 3가지 이상)",
+    assignment: "PRD 초안 완성 + 내 앱 전용 CLAUDE.md 초안 작성",
   },
-  // SLIDE 9: Session 6
+  // SLIDE 9: Session 6 (Milestone)
   {
     id: 9,
     type: "session",
     phase: "p2",
     phaseLabel: "Phase 2 · 6회차",
     sessionNum: 6,
-    title: "내 앱 설계 2 — DB 스키마 + API 구조",
-    content: [
-      "AI로 DB 테이블 구조 설계",
-      "SQL vs NoSQL 기초 개념",
-      "AI로 API 구조 초안 잡기",
-      "화면 플로우와 데이터 구조 연결",
-    ],
-    assignment: "내 앱 DB 스키마 AI로 설계 후 다이어그램으로 정리",
-  },
-  // SLIDE 10: Session 7
-  {
-    id: 10,
-    type: "session",
-    phase: "p2",
-    phaseLabel: "Phase 2 · 7회차",
-    sessionNum: 7,
-    title: "기술 스택 & 클라우드 서비스 상세",
-    content: [
-      "React Native / Expo / Next.js / Node.js",
-      "Supabase / Firebase 비교 및 판단 기준",
-      "Vercel / GitHub / Amplitude",
-      "개발환경 확정 및 계정 세팅",
-      "클라우드 vs Self-hosted 판단 기준",
-    ],
-    assignment: "Supabase · Vercel · Expo · GitHub 계정 모두 세팅 완료",
-  },
-  // SLIDE 11: Session 8
-  {
-    id: 11,
-    type: "session",
-    phase: "p2",
-    phaseLabel: "Phase 2 · 8회차",
-    sessionNum: 8,
-    title: "기획 & 관리 — Plane.so + GitHub",
+    title: "워크플로우 완성 — 티켓 관리 + 개발 루프",
     content: [
       "Plane.so 프로젝트 개설 + PRD 기반 이슈 등록",
-      "GitHub 레포 생성 · 첫 커밋 · 브랜치 전략",
-      "Git 기초 (commit / push / pull / branch)",
-      "이슈 → 개발 → PR → 머지 흐름",
+      "이슈 → 개발 → PR → 머지 루프 체험",
+      "CI/CD 개념 이해",
+      "CLAUDE.md / .cursorrules 고도화",
+      "컨텍스트 윈도우 관리 전략 · 에러 디버깅 패턴",
     ],
-    assignment: "Plane.so에 기능 이슈 5개 이상 등록 + GitHub 레포 첫 커밋",
+    note: "🎯 마일스톤 — 이 시점부터 모임 포맷이 코워킹으로 전환됩니다",
+    assignment: "Plane.so에 기능 이슈 5개 이상 등록 + 티켓 하나 직접 머지까지",
   },
-  // SLIDE 12: Phase 3 Overview
+  // SLIDE 10: Phase 3 Overview
   {
-    id: 12,
+    id: 10,
     type: "phase-overview",
     phase: "p3",
     phaseNum: 3,
-    phaseLabel: "Phase 3 · 9~11회차",
-    title: "개발 기초",
-    tagline: '"실제로 만들기 시작하는 단계"',
+    phaseLabel: "Phase 3 · 7~10회차",
+    title: "앱 개발",
+    tagline: '"직접 만들며 감을 잡는 단계"',
     sessions: [
-      { num: 9, title: "프로젝트 생성 — Expo + 클린 아키텍처" },
-      { num: 10, title: "디자인 시스템 — pencil.dev + NativeWind" },
-      { num: 11, title: "앱 개발 실전 + 티켓 관리" },
+      { num: 7, title: "프로젝트 생성 — Expo + 클린 아키텍처" },
+      { num: 8, title: "디자인 시스템 1 — 토큰 설계" },
+      { num: 9, title: "디자인 시스템 2 — 공통 컴포넌트" },
+      { num: 10, title: "핵심 화면 개발 — 디자인 시스템 적용 검증" },
     ],
+  },
+  // SLIDE 11: Session 7
+  {
+    id: 11,
+    type: "session",
+    phase: "p3",
+    phaseLabel: "Phase 3 · 7회차",
+    sessionNum: 7,
+    title: "프로젝트 생성 — Expo + 클린 아키텍처",
+    content: [
+      "Expo CLI로 프로젝트 생성",
+      "폴더 구조 설계 — Feature-based 클린 아키텍처",
+      "Expo Router — 파일 기반 라우팅 기초",
+      "시뮬레이터 · 실기기에서 실행",
+      "AI로 첫 화면 컴포넌트 생성 실습",
+    ],
+    assignment: "Expo 앱 생성 후 실기기에서 실행 스크린샷 공유",
+  },
+  // SLIDE 12: Session 8
+  {
+    id: 12,
+    type: "session",
+    phase: "p3",
+    phaseLabel: "Phase 3 · 8회차",
+    sessionNum: 8,
+    title: "디자인 시스템 1 — 토큰 설계",
+    content: [
+      "디자인 토큰 개념 (컬러 · 타이포 · 간격 · 반응형)",
+      "내 앱 컬러 팔레트 · 타이포그래피 정의",
+      "NativeWind(Tailwind) 세팅 + 디자인 토큰 연동",
+      "다크모드 대응 구조 설계",
+      "AI로 디자인 토큰 → 코드 연결 흐름",
+    ],
+    assignment: "내 앱 컬러 · 타이포 시스템 코드로 정의 완료",
   },
   // SLIDE 13: Session 9
   {
@@ -228,63 +229,64 @@ const slides: Slide[] = [
     phase: "p3",
     phaseLabel: "Phase 3 · 9회차",
     sessionNum: 9,
-    title: "프로젝트 생성 — Expo + 클린 아키텍처",
+    title: "디자인 시스템 2 — 공통 컴포넌트",
     content: [
-      "Expo CLI로 프로젝트 생성",
-      "폴더 구조 설계 — 클린 아키텍처 · Feature-based structure",
-      "상태관리 기초 (Zustand / Redux 개념)",
-      "시뮬레이터 · 실기기에서 실행",
-      "AI로 첫 화면 컴포넌트 생성 실습",
+      "공통 컴포넌트 설계 원칙",
+      "Button / Input / Card 컴포넌트 완성",
+      "로딩 · 에러 · 빈 상태(Empty State) 처리",
+      "AI 페어 프로그래밍으로 컴포넌트 빠르게 완성하기",
+      "Storybook 없이 컴포넌트 검증하는 법",
     ],
-    assignment: "Expo 앱 생성 후 실기기에서 실행 스크린샷 공유",
+    assignment: "공통 컴포넌트 3개 이상 완성 + 내 앱 화면에 적용",
   },
-  // SLIDE 14: Session 10
+  // SLIDE 14: Session 10 (Milestone)
   {
     id: 14,
     type: "session",
     phase: "p3",
     phaseLabel: "Phase 3 · 10회차",
     sessionNum: 10,
-    title: "디자인 시스템 — pencil.dev + NativeWind",
+    title: "핵심 화면 개발 — 디자인 시스템 적용 검증",
     content: [
-      "디자인 토큰 개념 (컬러 · 타이포 · 간격)",
-      "pencil.dev로 컴포넌트 스펙 정의",
-      "NativeWind(Tailwind) 세팅 + 디자인 토큰 연동",
-      "공통 컴포넌트 설계 — Button / Input / Card",
-      "AI로 컴포넌트 스펙 → 코드 연결 흐름",
+      "핵심 화면 2개 이상 완성 (디자인 시스템 100% 적용)",
+      "탭 / 스택 네비게이션 설정",
+      "Plane.so 티켓 기반 개발 루틴 정착",
+      "AI에게 넘길 수 있는 작업 vs 직접 해야 하는 작업 구분",
+      "이후 자율 개발을 위한 패턴 정리",
     ],
-    assignment: "내 앱 컬러 · 타이포 시스템 정의 후 공통 컴포넌트 3개 완성",
-  },
-  // SLIDE 15: Session 11
-  {
-    id: 15,
-    type: "session",
-    phase: "p3",
-    phaseLabel: "Phase 3 · 11회차",
-    sessionNum: 11,
-    title: "앱 개발 실전 + 티켓 관리",
-    content: [
-      "Expo Router — 파일 기반 라우팅 · 탭/스택 네비게이션",
-      "Plane.so 티켓 기반으로 기능 개발",
-      "AI 페어 프로그래밍 실습 (Cursor)",
-      "로딩 · 에러 상태 처리",
-      "UI 화면 2개 이상 완성 실습",
-    ],
+    note: "🎯 마일스톤 — AI로 혼자 개발할 수 있는 기반 완성",
     assignment: "핵심 화면 2개 이상 완성 후 Plane.so 티켓 Done 처리",
   },
-  // SLIDE 16: Phase 4 Overview
+  // SLIDE 15: Phase 4 Overview
   {
-    id: 16,
+    id: 15,
     type: "phase-overview",
     phase: "p4",
     phaseNum: 4,
-    phaseLabel: "Phase 4 · 12~13회차",
-    title: "백엔드 & 연동",
-    tagline: '"데이터가 흐르는 구조 만들기"',
+    phaseLabel: "Phase 4 · 11~12회차",
+    title: "코워킹",
+    tagline: '"각자 앱을 AI로 만들어가는 단계"',
     sessions: [
-      { num: 12, title: "백엔드 연동 — Supabase + 인증" },
-      { num: 13, title: "실시간 기능 + 파일 업로드 + 푸시 알림" },
+      { num: 11, title: "코워킹 1 — 개인 개발 + Q&A" },
+      { num: 12, title: "코워킹 2 — 개인 개발 + 미니 데모" },
     ],
+  },
+  // SLIDE 16: Session 11
+  {
+    id: 16,
+    type: "session",
+    phase: "p4",
+    phaseLabel: "Phase 4 · 11회차",
+    sessionNum: 11,
+    title: "코워킹 1 — 개인 개발 + Q&A",
+    content: [
+      "지난주 과제 점검 및 공유 (10분)",
+      "공통 막힌 부분 · 주제 설명 (20분)",
+      "개인 개발 + 실시간 Q&A (1시간 30분)",
+      "백엔드 연동 (Supabase / Firebase) 질문 대응",
+      "배포 · 스토어 등록 질문 대응",
+    ],
+    assignment: "각자 이번 주 개발 목표 1가지 설정 후 다음 모임에 공유",
   },
   // SLIDE 17: Session 12
   {
@@ -293,149 +295,20 @@ const slides: Slide[] = [
     phase: "p4",
     phaseLabel: "Phase 4 · 12회차",
     sessionNum: 12,
-    title: "백엔드 연동 — Supabase + 인증",
+    title: "코워킹 2 — 개인 개발 + 미니 데모",
     content: [
-      "Supabase 테이블 생성 + RLS 보안 정책 설정",
-      "Supabase Auth — 이메일 · 소셜 로그인",
-      "세션 관리 · 로그인 플로우 완성",
-      "CRUD 구현 (Create / Read / Update / Delete)",
-      "AI로 SQL 쿼리 생성 및 최적화",
+      "지난주 과제 점검 및 공유 (10분)",
+      "공통 막힌 부분 · 주제 설명 (20분)",
+      "개인 개발 + 실시간 Q&A (1시간)",
+      "미니 데모 — 각자 현재 앱 상태 공유 (30분)",
+      "회고 + 다음 스텝 논의",
     ],
-    assignment: "로그인 기능 완성 + 핵심 데이터 테이블 1개 연동",
+    note: "코워킹 포맷이 잘 맞으면 이후에도 계속 연장 가능",
+    assignment: "현재 앱 상태 스크린샷 or 영상으로 기록",
   },
-  // SLIDE 18: Session 13
+  // SLIDE 18: Ops
   {
     id: 18,
-    type: "session",
-    phase: "p4",
-    phaseLabel: "Phase 4 · 13회차",
-    sessionNum: 13,
-    title: "실시간 기능 + 파일 업로드 + 푸시 알림",
-    content: [
-      "Supabase Realtime으로 실시간 데이터 구독",
-      "Supabase Storage 파일 업로드 · 다운로드",
-      "Expo Push Notification 세팅",
-      "이메일 발송 — Resend 연동",
-      "n8n으로 이벤트 자동화 기초",
-    ],
-    assignment: "이미지 업로드 기능 1개 추가 + 푸시 알림 테스트 성공",
-  },
-  // SLIDE 19: Phase 5 Overview
-  {
-    id: 19,
-    type: "phase-overview",
-    phase: "p5",
-    phaseNum: 5,
-    phaseLabel: "Phase 5 · 14~15회차",
-    title: "배포",
-    tagline: '"세상에 내보내는 단계"',
-    sessions: [
-      { num: 14, title: "CI/CD + EAS Build + Vercel 자동 배포" },
-      { num: 15, title: "앱스토어 출시 — Play Store + App Store" },
-    ],
-  },
-  // SLIDE 20: Session 14
-  {
-    id: 20,
-    type: "session",
-    phase: "p5",
-    phaseLabel: "Phase 5 · 14회차",
-    sessionNum: 14,
-    title: "CI/CD + EAS Build + Vercel 자동 배포",
-    content: [
-      "GitHub Actions 자동 배포 설정",
-      "EAS Build로 앱 빌드 파일 생성 (.ipa / .apk)",
-      "Vercel 프로젝트 연결 + 자동 배포",
-      "환경 변수 관리 (.env.local vs 프로덕션)",
-      "Preview 배포로 PR 검증",
-    ],
-    assignment: "GitHub Actions 설정 + EAS Build 빌드 파일 생성 성공",
-  },
-  // SLIDE 21: Session 15
-  {
-    id: 21,
-    type: "session",
-    phase: "p5",
-    phaseLabel: "Phase 5 · 15회차",
-    sessionNum: 15,
-    title: "앱스토어 출시 — Play Store + App Store",
-    content: [
-      "App Store · Google Play 등록 절차",
-      "screenshots.pro로 스토어 이미지 생성",
-      "개인정보처리방침 · 이용약관 초안 작성",
-      "심사 대응 체크리스트",
-      "커스텀 도메인 연결",
-    ],
-    assignment: "스토어 등록용 스크린샷 5장 + 개인정보처리방침 완성",
-  },
-  // SLIDE 22: Phase 6 Overview
-  {
-    id: 22,
-    type: "phase-overview",
-    phase: "p6",
-    phaseNum: 6,
-    phaseLabel: "Phase 6 · 16~18회차",
-    title: "운영 & 개선",
-    tagline: '"출시 후 더 좋게 만들기"',
-    sessions: [
-      { num: 16, title: "데이터 분석 + 사용자 획득" },
-      { num: 17, title: "수익화 모델 + 결제 연동" },
-      { num: 18, title: "앱 개선 — 접근성 · 다크모드 · 다국어 + 최종 발표" },
-    ],
-  },
-  // SLIDE 23: Session 16
-  {
-    id: 23,
-    type: "session",
-    phase: "p6",
-    phaseLabel: "Phase 6 · 16회차",
-    sessionNum: 16,
-    title: "데이터 분석 + 사용자 획득",
-    content: [
-      "Amplitude 이벤트 설계 원칙",
-      "핵심 지표 정의 및 대시보드 구성",
-      "Sentry 에러 트래킹 설정",
-      "사용자 획득 전략 (SNS · Product Hunt · 커뮤니티)",
-      "데이터 기반 의사결정",
-    ],
-    assignment: "Amplitude 핵심 이벤트 3개 이상 설정 + 대시보드 구성",
-  },
-  // SLIDE 24: Session 17
-  {
-    id: 24,
-    type: "session",
-    phase: "p6",
-    phaseLabel: "Phase 6 · 17회차",
-    sessionNum: 17,
-    title: "수익화 모델 + 결제 연동",
-    content: [
-      "수익화 모델 검토 (구독 / 단건 / 광고)",
-      "Stripe 기초 세팅 · 단건 결제 구현",
-      "토스페이먼츠 옵션 검토",
-      "구독 플랜 설계 + Webhook으로 결제 상태 DB 반영",
-    ],
-    assignment: "Stripe 테스트 모드로 단건 결제 1회 성공",
-  },
-  // SLIDE 25: Session 18
-  {
-    id: 25,
-    type: "session",
-    phase: "p6",
-    phaseLabel: "Phase 6 · 18회차",
-    sessionNum: 18,
-    title: "앱 개선 — 접근성 · 다크모드 · 다국어 + 최종 발표",
-    content: [
-      "접근성 (a11y) 지원",
-      "다크모드 지원",
-      "다국어(i18n) 지원",
-      "최종 데모 발표 (각자 5분)",
-      "회고 (Keep / Problem / Try) + 다음 스텝",
-    ],
-    assignment: "완성된 앱 5분 데모 발표 + 회고 작성",
-  },
-  // SLIDE 26: Ops
-  {
-    id: 26,
     type: "ops",
   },
 ];
@@ -460,7 +333,7 @@ function CoverSlide() {
         커리큘럼 & 개발 프로세스 가이드
       </h1>
       <div className="flex flex-wrap gap-3 justify-center">
-        {["📅 주 1회 × 18회차", "⏱ 약 5개월", "🕐 회당 2시간"].map((t) => (
+        {["📅 주 1회 × 12회차", "⏱ 약 3개월", "🕐 회당 2시간"].map((t) => (
           <span
             key={t}
             className="px-4 py-2 rounded-full text-sm font-medium"
@@ -584,22 +457,23 @@ function OpsSlide() {
       <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#F0F0F5" }}>
         운영 가이드
       </h2>
-      <p className="text-sm -mt-3" style={{ color: "#A0A0B0" }}>과제·점검·생존 팁</p>
+      <p className="text-sm -mt-3" style={{ color: "#A0A0B0" }}>모임 운영 방식 & 참여 팁</p>
       <div className="grid sm:grid-cols-2 gap-4">
         {[
           {
             title: "⚙️ 운영 방식",
             items: [
-              "회차 구성: 개념+실습 90분 → 개인 프로젝트 적용 30분",
-              "과제 제출: 슬랙에 [n회차] @이름 - 완료/질문",
-              "막힌 부분: 회차 초반 10분 공유",
+              "1~6회차: 개념 + 실습 위주 (2시간)",
+              "7~10회차: 과제 점검 + 강의 + 실습",
+              "11~12회차: 과제 점검 20분 + 개인 개발 1.5시간 + Q&A",
             ],
           },
           {
             title: "📅 일정",
             items: [
               "주 1회 · 회당 2시간",
-              "총 18회차 · 약 5개월",
+              "총 12회차 · 약 3개월",
+              "🎯 6회차 / 10회차 — 마일스톤",
             ],
           },
           {
@@ -725,7 +599,7 @@ export default function SlidesPage() {
           ← 이전
         </button>
 
-        {/* Dot navigation (phase-level) */}
+        {/* Dot navigation */}
         <div className="flex gap-1.5 items-center">
           {Array.from({ length: TOTAL }, (_, i) => (
             <button
