@@ -78,9 +78,9 @@ export const curriculum: Phase[] = [
     items: [
       {
         number: 4,
-        title: "개발 환경 세팅 — Cursor · GitHub · Vercel",
+        title: "개발 환경 세팅 — OpenClaw · GitHub · Vercel",
         content: [
-          "Cursor 설치 및 AI 코딩 환경 세팅",
+          "OpenClaw 설치 및 AI 코딩 환경 세팅",
           "GitHub 레포 생성 · 첫 커밋 · 브랜치 전략",
           "Vercel 프로젝트 연결 + 자동 배포 파이프라인",
           "환경 변수 관리 (.env 개념)",
@@ -107,7 +107,7 @@ export const curriculum: Phase[] = [
           "Plane.so 프로젝트 개설 + PRD 기반 이슈 등록",
           "이슈 → 개발 → PR → 머지 루프 체험",
           "CI/CD 개념 이해",
-          "CLAUDE.md / .cursorrules 고도화",
+          "CLAUDE.md 고도화",
           "컨텍스트 윈도우 관리 전략 · 에러 디버깅 패턴",
         ],
         note: "🎯 마일스톤 — 이 시점부터 모임 포맷이 코워킹으로 전환됩니다",
