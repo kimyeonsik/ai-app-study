@@ -6,6 +6,47 @@ import { curriculum, MILESTONE_SESSIONS, type Phase, type Session } from "@/lib/
 import { QRCodeSVG } from "qrcode.react";
 
 const KAKAOPAY_URL = "https://qr.kakaopay.com/Ej8Rs3cTi3a9808521";
+const DAANGN_URL = "https://daangn.com/kr/share/community/ref/invite-group/70DsO9xYwW";
+
+function JoinModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="flex flex-col items-center gap-5 rounded-2xl px-8 py-8 max-w-xs w-full"
+        style={{ background: "#16161A", border: "1px solid #2E2E38" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex flex-col items-center gap-1">
+          <h2 className="text-lg font-bold" style={{ color: "#F0F0F5" }}>모임 참여하기</h2>
+          <p className="text-xs text-center" style={{ color: "#A0A0B0" }}>당근 QR을 스캔해서 가입해주세요</p>
+        </div>
+        <div className="rounded-xl p-3" style={{ background: "#FFFFFF" }}>
+          <QRCodeSVG value={DAANGN_URL} size={200} />
+        </div>
+        <a
+          href={DAANGN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm px-5 py-2.5 rounded-xl transition-all hover:opacity-80 font-semibold"
+          style={{ background: "#FF6F0F", color: "#FFFFFF" }}
+        >
+          🥕 당근에서 참여 신청
+        </a>
+        <button
+          onClick={onClose}
+          className="text-xs"
+          style={{ color: "#A0A0B0" }}
+        >
+          닫기
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function QRModal({ onClose }: { onClose: () => void }) {
   return (
@@ -179,24 +220,27 @@ export default function Home() {
     0
   );
   const [showQR, setShowQR] = useState(false);
+  const [showJoin, setShowJoin] = useState(false);
   const [activePhase, setActivePhase] = useState(1);
 
   return (
     <div className="min-h-screen" style={{ background: "#0D0D0F" }}>
       {showQR && <QRModal onClose={() => setShowQR(false)} />}
+      {showJoin && <JoinModal onClose={() => setShowJoin(false)} />}
       <main className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Hero */}
         <div className="mb-12 text-center">
-          <div
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium mb-6"
-            style={{ background: "#1E1E24", color: "#A78BFA" }}
+          <button
+            onClick={() => setShowJoin(true)}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium mb-6 transition-all hover:opacity-80 cursor-pointer"
+            style={{ background: "#1E1E24", color: "#A78BFA", border: "1px solid #A78BFA40" }}
           >
             <span
               className="w-2 h-2 rounded-full animate-pulse"
               style={{ background: "#A78BFA" }}
             />
-            모집 중
-          </div>
+            모집 중 — 눌러서 참여하기 →
+          </button>
           <h1
             className="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
             style={{ color: "#F0F0F5" }}
