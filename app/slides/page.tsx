@@ -87,6 +87,7 @@ const slides: Slide[] = [
       "좋은 프롬프트 vs 나쁜 프롬프트 비교",
     ],
     assignment: "AI에게 내 앱의 기능 하나를 설명하고 구현 방법 물어보기",
+    detailUrl: "/session2",
   },
   // SLIDE 5: Session 3
   {
@@ -104,26 +105,7 @@ const slides: Slide[] = [
       "AI 지시문 설계 기초",
     ],
     assignment: "기능 1개를 PO / Dev / QA 관점으로 각각 질문 → 결과 비교 공유",
-  },
-  // SLIDE 5-B: Session 2·3 Combined
-  {
-    id: 5.5,
-    type: "session",
-    phase: "p1",
-    phaseLabel: "Phase 1 · 2·3회차",
-    sessionNum: 2,
-    title: "개발 용어 · 프롬프팅 기초 + 바이브코딩 · 멀티에이전트",
-    content: [
-      "자주 쓰는 개발 용어 정리 (API, 프론트/백엔드, 배포 등)",
-      "클라이언트 ↔ 서버 ↔ DB 흐름",
-      "프롬프팅 기초 패턴 (역할 / 맥락 / 출력 형식)",
-      "바이브코딩 철학 — 설계가 코드보다 중요하다",
-      "멀티에이전트 구조 개념 (PO / Dev / QA 역할 분리)",
-      "AI 지시문 설계 기초",
-    ],
-    note: "2회차 + 3회차 합본 장표",
-    assignment: "기능 1개를 PO / Dev / QA 관점으로 각각 질문 → 결과 비교 공유",
-    detailUrl: "/session2-3",
+    detailUrl: "/session3",
   },
   // SLIDE 6: Phase 2 Overview
   {
