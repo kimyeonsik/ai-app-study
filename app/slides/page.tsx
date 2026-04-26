@@ -117,7 +117,7 @@ const slides: Slide[] = [
     title: "시스템 구축",
     tagline: '"나만의 AI 개발 환경을 만드는 단계"',
     sessions: [
-      { num: 4, title: "개발 환경 세팅 — OpenClaw · GitHub · Vercel" },
+      { num: 4, title: "개발 환경 세팅 — Claude Code · GitHub · Vercel" },
       { num: 5, title: "내 앱 기획 — PRD + AI 지시문 작성" },
       { num: 6, title: "워크플로우 완성 — 티켓 관리 + 개발 루프" },
     ],
@@ -129,15 +129,16 @@ const slides: Slide[] = [
     phase: "p2",
     phaseLabel: "Phase 2 · 4회차",
     sessionNum: 4,
-    title: "개발 환경 세팅 — OpenClaw · GitHub · Vercel",
+    title: "개발 환경 세팅 — Claude Code · GitHub · Vercel",
     content: [
-      "OpenClaw 설치 및 AI 코딩 환경 세팅",
+      "Claude Code 설치 및 AI 코딩 환경 세팅",
       "GitHub 레포 생성 · 첫 커밋 · 브랜치 전략",
       "Vercel 프로젝트 연결 + 자동 배포 파이프라인",
       "환경 변수 관리 (.env 개념)",
       "Preview 배포 체험 — PR 하나로 URL 생성",
     ],
     assignment: "GitHub 레포 생성 + Vercel 자동 배포 연결 성공",
+    detailUrl: "/session4",
   },
   // SLIDE 8: Session 5
   {
@@ -155,6 +156,7 @@ const slides: Slide[] = [
       "바이브코딩으로 PRD 고도화 실습",
     ],
     assignment: "PRD 초안 완성 + 내 앱 전용 AI 지시문 초안 작성",
+    detailUrl: "/session5",
   },
   // SLIDE 9: Session 6 (Milestone)
   {

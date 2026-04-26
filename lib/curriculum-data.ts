@@ -78,9 +78,9 @@ export const curriculum: Phase[] = [
     items: [
       {
         number: 4,
-        title: "개발 환경 세팅 — OpenClaw · GitHub · Vercel",
+        title: "개발 환경 세팅 — Claude Code · GitHub · Vercel",
         content: [
-          "OpenClaw 설치 및 AI 코딩 환경 세팅",
+          "Claude Code 설치 및 AI 코딩 환경 세팅",
           "GitHub 레포 생성 · 첫 커밋 · 브랜치 전략",
           "Vercel 프로젝트 연결 + 자동 배포 파이프라인",
           "환경 변수 관리 (.env 개념)",
