@@ -10,11 +10,10 @@ const slides = [
   { id: 5, type: "workshop1-draft" as const },
   { id: 6, type: "workshop2-persona" as const },
   { id: 7, type: "workshop3-screens" as const },
-  { id: 8, type: "ai-instructions" as const },
-  { id: 9, type: "workshop4-issues" as const },
-  { id: 10, type: "prompt-cheatsheet" as const },
-  { id: 11, type: "good-vs-bad" as const },
-  { id: 12, type: "homework" as const },
+  { id: 8, type: "workshop4-issues" as const },
+  { id: 9, type: "prompt-cheatsheet" as const },
+  { id: 10, type: "good-vs-bad" as const },
+  { id: 11, type: "homework" as const },
 ];
 
 const TOTAL = slides.length;
@@ -135,9 +134,8 @@ function TimetableSlide() {
     { time: "+0:45", label: "🛠 워크숍 2 — 페르소나 + 유저 스토리 추가", dur: "20 min", kind: "workshop" },
     { time: "+1:05", label: "☕ 짧은 휴식", dur: "5 min", kind: "break" },
     { time: "+1:10", label: "🛠 워크숍 3 — 화면 목록 + 유저 플로우 도출", dur: "15 min", kind: "workshop" },
-    { time: "+1:25", label: "강의 — AI 지시문(CLAUDE.md) 작성법", dur: "10 min", kind: "lecture" },
-    { time: "+1:35", label: "🛠 워크숍 4 — PRD → 이슈 5개로 분해", dur: "20 min", kind: "workshop" },
-    { time: "+1:55", label: "공유 + 마무리 — 한 명씩 PRD 30초 피칭", dur: "5 min", kind: "intro" },
+    { time: "+1:25", label: "🛠 워크숍 4 — PRD → 이슈 5개로 분해", dur: "25 min", kind: "workshop" },
+    { time: "+1:50", label: "공유 + 마무리 — 한 명씩 PRD 30초 피칭", dur: "10 min", kind: "intro" },
   ];
 
   const colorOf = (kind: string) =>
@@ -151,7 +149,7 @@ function TimetableSlide() {
           워크숍 시간표
         </h2>
         <p className="text-sm mt-1" style={{ color: "#A0A0B0" }}>
-          강의 30분 · 손으로 만드는 시간 1시간 20분 · 공유 10분
+          강의 20분 · 손으로 만드는 시간 1시간 15분 · 공유 10분
         </p>
       </div>
       <div className="flex flex-col gap-2">
@@ -436,65 +434,6 @@ function Workshop3Slide() {
   );
 }
 
-function AiInstructionsSlide() {
-  return (
-    <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>04</p>
-        <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#F0F0F5" }}>
-          AI 지시문 — CLAUDE.md
-        </h2>
-        <p className="text-sm mt-1" style={{ color: "#A0A0B0" }}>레포 루트에 두면 Claude가 매번 자동으로 읽는 파일</p>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-3">
-        <div className="rounded-xl p-4" style={{ background: "#16161A", border: `1px solid ${ACCENT}30` }}>
-          <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: ACCENT }}>왜 필요한가</p>
-          <ul className="flex flex-col gap-1.5 text-xs" style={{ color: "#C8C8D8" }}>
-            <li className="flex gap-2"><span style={{ color: ACCENT }}>→</span>매번 같은 컨텍스트를 안 알려줘도 됨</li>
-            <li className="flex gap-2"><span style={{ color: ACCENT }}>→</span>스타일·컨벤션·금지 사항을 한 곳에</li>
-            <li className="flex gap-2"><span style={{ color: ACCENT }}>→</span>팀원/AI가 같은 룰 공유</li>
-          </ul>
-        </div>
-        <div className="rounded-xl p-4" style={{ background: "#16161A", border: "1px solid #2E2E38" }}>
-          <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#A0A0B0" }}>들어가야 할 내용</p>
-          <ul className="flex flex-col gap-1.5 text-xs" style={{ color: "#C8C8D8" }}>
-            <li>① 프로젝트 한 줄 소개 + 페르소나</li>
-            <li>② 기술 스택 (Next.js · React Native 등)</li>
-            <li>③ 폴더 구조 규칙</li>
-            <li>④ 코딩 컨벤션 / 금지 사항</li>
-            <li>⑤ 자주 쓰는 명령어</li>
-          </ul>
-        </div>
-      </div>
-      <div className="rounded-xl p-4" style={{ background: "#16161A", border: `1px solid ${ACCENT2}30` }}>
-        <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT2 }}>
-          최소 템플릿 (그대로 시작 가능)
-        </p>
-        <PromptBlock
-          text={`# CLAUDE.md
-
-## 프로젝트
-- 한 줄: <PRD에서 복사>
-- 페르소나: <PRD에서 복사>
-
-## 기술 스택
-- Next.js 16 (App Router) · TypeScript · Tailwind v4
-
-## 작업 규칙
-- 컴포넌트: app/ 또는 components/ 안에만
-- 새 파일 만들기 전에 기존 파일 활용 검토
-- 한국어로 답변, 코드 주석은 영어 OK
-
-## 금지
-- 임의로 라이브러리 추가 금지 (먼저 물어볼 것)
-- console.log 남기지 말 것
-`}
-        />
-      </div>
-    </div>
-  );
-}
-
 function Workshop4Slide() {
   return (
     <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
@@ -597,7 +536,7 @@ SCREENS.md를 다시 써줘. 나머지 화면은 "Phase 2"로 분리.`,
   return (
     <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>05</p>
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>04</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#F0F0F5" }}>
           막혔을 때 쓰는 프롬프트 치트시트
         </h2>
@@ -654,7 +593,7 @@ function GoodVsBadSlide() {
   return (
     <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>06</p>
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>05</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#F0F0F5" }}>
           나쁜 PRD vs 좋은 PRD
         </h2>
@@ -702,20 +641,19 @@ function HomeworkSlide() {
   return (
     <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>07</p>
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: ACCENT }}>06</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ color: "#F0F0F5" }}>
           이번 주 과제
         </h2>
       </div>
       <div className="rounded-xl p-6" style={{ background: `${ACCENT}10`, border: `1.5px solid ${ACCENT}40` }}>
         <p className="text-base font-bold mb-4" style={{ color: "#F0F0F5" }}>
-          🎯 4개 문서 GitHub 레포에 커밋
+          🎯 3개 문서 GitHub 레포에 커밋
         </p>
         <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "#C8C8D8" }}>
           <li className="flex gap-2"><span style={{ color: ACCENT, flexShrink: 0 }}>→</span><code className="font-mono text-xs px-1.5 py-0.5 rounded" style={{ background: "#0D0D0F", color: ACCENT }}>PRD.md</code> — 워크숍 1+2 결과 (페르소나 + 스토리 포함)</li>
           <li className="flex gap-2"><span style={{ color: ACCENT, flexShrink: 0 }}>→</span><code className="font-mono text-xs px-1.5 py-0.5 rounded" style={{ background: "#0D0D0F", color: ACCENT }}>SCREENS.md</code> — 워크숍 3 결과 (화면 + 플로우)</li>
           <li className="flex gap-2"><span style={{ color: ACCENT, flexShrink: 0 }}>→</span><code className="font-mono text-xs px-1.5 py-0.5 rounded" style={{ background: "#0D0D0F", color: ACCENT }}>ISSUES.md</code> — 워크숍 4 결과 (이슈 5개)</li>
-          <li className="flex gap-2"><span style={{ color: ACCENT, flexShrink: 0 }}>→</span><code className="font-mono text-xs px-1.5 py-0.5 rounded" style={{ background: "#0D0D0F", color: ACCENT }}>CLAUDE.md</code> — 본인 앱 전용 AI 지시문</li>
           <li className="flex gap-2"><span style={{ color: ACCENT, flexShrink: 0 }}>→</span>완료 인증: GitHub 커밋 링크 슬랙에 공유</li>
         </ul>
       </div>
@@ -789,7 +727,6 @@ export default function Session5Page() {
           {slide.type === "workshop1-draft" && <Workshop1Slide />}
           {slide.type === "workshop2-persona" && <Workshop2Slide />}
           {slide.type === "workshop3-screens" && <Workshop3Slide />}
-          {slide.type === "ai-instructions" && <AiInstructionsSlide />}
           {slide.type === "workshop4-issues" && <Workshop4Slide />}
           {slide.type === "prompt-cheatsheet" && <PromptCheatsheetSlide />}
           {slide.type === "good-vs-bad" && <GoodVsBadSlide />}

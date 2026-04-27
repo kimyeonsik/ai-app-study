@@ -90,15 +90,15 @@ export const curriculum: Phase[] = [
       },
       {
         number: 5,
-        title: "내 앱 기획 — PRD + AI 지시문 작성",
+        title: "내 앱 기획 — PRD 워크숍",
         content: [
-          "PRD 작성 실습 (Claude로 초안 생성)",
-          "화면 목록 · 유저 플로우 설계",
-          "AI 지시문 작성법 — 내 앱 전용 AI 컨텍스트 설정",
-          "AI로 PRD → 유저스토리 → 이슈 분해",
-          "바이브코딩으로 PRD 고도화 실습",
+          "Claude 인터뷰 방식으로 PRD 초안 작성",
+          "페르소나 + 유저 스토리(P0/P1/P2 + 수락 기준) 강화",
+          "화면 목록 + 유저 플로우 (Mermaid)",
+          "PRD → 이슈 5개로 분해 (다음 회차 Plane.so 등록 준비)",
+          "막혔을 때 쓰는 프롬프트 치트시트 5종",
         ],
-        assignment: "PRD 초안 완성 + 내 앱 전용 AI 지시문 초안 작성",
+        assignment: "PRD.md + SCREENS.md + ISSUES.md 3개 문서 GitHub 커밋",
       },
       {
         number: 6,
