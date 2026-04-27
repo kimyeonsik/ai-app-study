@@ -23,6 +23,63 @@ const ACCENT = "#60A5FA";
 const ACCENT2 = "#A78BFA";
 const HIGHLIGHT = "#FBBF24";
 
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handle = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+      } catch {
+        // ignore
+      }
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handle}
+      className="text-xs px-2.5 py-1 rounded-md font-medium transition-all hover:opacity-80"
+      style={{
+        background: copied ? `${HIGHLIGHT}25` : "#1E1E28",
+        color: copied ? HIGHLIGHT : "#A0A0B0",
+        border: `1px solid ${copied ? `${HIGHLIGHT}60` : "#2E2E38"}`,
+      }}
+      aria-label="프롬프트 복사"
+    >
+      {copied ? "✓ 복사됨" : "📋 복사"}
+    </button>
+  );
+}
+
+function PromptBlock({ text }: { text: string }) {
+  return (
+    <div className="relative">
+      <pre
+        className="text-xs rounded-md px-3 py-3 pr-24 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
+        style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
+      >
+{text}
+      </pre>
+      <div className="absolute top-2 right-2">
+        <CopyButton text={text} />
+      </div>
+    </div>
+  );
+}
+
 function CoverSlide() {
   return (
     <div className="flex flex-col items-center justify-center text-center gap-8">
@@ -248,28 +305,21 @@ function Workshop1Slide() {
       </div>
       <div className="rounded-xl p-5" style={{ background: "#16161A", border: `1px solid ${ACCENT}30` }}>
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>
-          STEP 2 — Claude에게 던질 프롬프트 (그대로 복사 OK)
+          STEP 2 — Claude한테 인터뷰 시작 (그대로 복사 OK)
         </p>
-        <pre
-          className="text-xs rounded-md px-3 py-3 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-          style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-        >
-{`아래 한 줄 아이디어를 받아서 PRD 초안을 작성해줘.
-
-[아이디어]
-"<여기에 본인 한 줄 붙여넣기>"
-
-[형식]
-1. 한 줄 정의
-2. 타깃 사용자 (페르소나 1~2명)
-3. 핵심 문제 3개
-4. MVP 핵심 기능 5개 (우선순위 포함)
-5. 주요 화면 (4~6개) + 한 줄 설명
-6. 성공 지표 2~3개
-7. Out of Scope (이번엔 안 만들 것 5개)
-
-각 항목은 짧고 구체적으로. 추측은 [TBD]로 표시해줘.`}
-        </pre>
+        <PromptBlock
+          text={`나는 [어떤 사람]을 위한 [어떤 앱]을 만들려고 해.
+PRD를 작성하고 싶은데, 바로 쓰지 말고 먼저 너가 좋은 PRD를
+쓰기 위해 나한테 필요한 정보를 5-10개 질문해줘.
+한 번에 다 묻지 말고, 한 번에 2-3개씩 나눠서 물어봐.
+내가 답하면 다음 질문 묶음으로 넘어가는 식으로.`}
+        />
+        <p className="text-xs mt-3" style={{ color: "#A0A0B0" }}>
+          → Claude가 2~3개씩 질문 → 답변 → 다음 묶음 반복. 충분히 정보가 모였다 싶으면 마지막에 한 줄 더:
+        </p>
+        <p className="text-xs mt-1.5 font-mono px-3 py-2 rounded-md" style={{ background: "#0D0D0F", color: ACCENT, border: "1px solid #2E2E38" }}>
+          &ldquo;좋아, 이제 모인 정보로 PRD.md 파일을 작성해줘. 추측은 [TBD]로 표시.&rdquo;
+        </p>
       </div>
       <div
         className="rounded-xl px-5 py-3 text-sm"
@@ -322,17 +372,14 @@ function Workshop2Slide() {
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: HIGHLIGHT }}>
           Claude 프롬프트
         </p>
-        <pre
-          className="text-xs rounded-md px-3 py-3 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-          style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-        >
-{`첨부한 PRD.md를 읽고:
+        <PromptBlock
+          text={`첨부한 PRD.md를 읽고:
 1) 페르소나 1명을 위 템플릿대로 더 구체화 (실제 인물처럼)
 2) 핵심 기능 5개 각각에 대응되는 유저 스토리 5개 작성
 3) 각 스토리에 우선순위(P0/P1/P2)와 한 줄 수락 기준(AC) 추가
 
 PRD.md를 업데이트해서 보여줘.`}
-        </pre>
+        />
       </div>
     </div>
   );
@@ -374,11 +421,8 @@ function Workshop3Slide() {
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: HIGHLIGHT }}>
           Claude 프롬프트
         </p>
-        <pre
-          className="text-xs rounded-md px-3 py-3 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-          style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-        >
-{`PRD.md를 기반으로 SCREENS.md 파일을 만들어줘.
+        <PromptBlock
+          text={`PRD.md를 기반으로 SCREENS.md 파일을 만들어줘.
 
 포함할 것:
 1. 주요 화면 6개 (이름 · 목적 · 핵심 컴포넌트)
@@ -386,7 +430,7 @@ function Workshop3Slide() {
 3. Mermaid flowchart로 화면 간 이동 다이어그램
 
 화면 이름은 짧게 (예: HomeScreen, RecipeDetailScreen).`}
-        </pre>
+        />
       </div>
     </div>
   );
@@ -426,11 +470,8 @@ function AiInstructionsSlide() {
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT2 }}>
           최소 템플릿 (그대로 시작 가능)
         </p>
-        <pre
-          className="text-xs rounded-md px-3 py-3 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-          style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-        >
-{`# CLAUDE.md
+        <PromptBlock
+          text={`# CLAUDE.md
 
 ## 프로젝트
 - 한 줄: <PRD에서 복사>
@@ -448,7 +489,7 @@ function AiInstructionsSlide() {
 - 임의로 라이브러리 추가 금지 (먼저 물어볼 것)
 - console.log 남기지 말 것
 `}
-        </pre>
+        />
       </div>
     </div>
   );
@@ -483,11 +524,8 @@ function Workshop4Slide() {
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: HIGHLIGHT }}>
           Claude 프롬프트
         </p>
-        <pre
-          className="text-xs rounded-md px-3 py-3 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-          style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-        >
-{`PRD.md + SCREENS.md를 읽고, MVP를 만들기 위한
+        <PromptBlock
+          text={`PRD.md + SCREENS.md를 읽고, MVP를 만들기 위한
 첫 5개 이슈를 ISSUES.md에 만들어줘.
 
 각 이슈 양식:
@@ -498,7 +536,7 @@ function Workshop4Slide() {
 - 의존: 선행 이슈 번호 (있다면)
 
 순서는 Day 1에 시작 가능한 것부터.`}
-        </pre>
+        />
       </div>
       <div
         className="rounded-xl px-5 py-3 text-sm"
@@ -585,12 +623,7 @@ SCREENS.md를 다시 써줘. 나머지 화면은 "Phase 2"로 분리.`,
                 {c.symptom}
               </span>
             </div>
-            <pre
-              className="text-xs rounded-md px-3 py-2.5 overflow-x-auto font-mono whitespace-pre-wrap leading-relaxed"
-              style={{ background: "#0D0D0F", color: "#C8C8D8", border: "1px solid #2E2E38" }}
-            >
-{c.prompt}
-            </pre>
+            <PromptBlock text={c.prompt} />
           </div>
         ))}
       </div>
